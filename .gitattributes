@@ -1,0 +1,11 @@
+* text=auto
+
+*.md diff=markdown
+*.sh text eol=lf
+*.yml text eol=lf
+*.env text eol=lf
+*.log text eol=lf
+
+/.github export-ignore
+CHANGELOG.md export-ignore
+.styleci.yml export-ignore
