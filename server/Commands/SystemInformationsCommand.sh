@@ -7,7 +7,7 @@ SystemInformationsCommand ()
 	H_command_starter;
 
 	H_selected_option "Informations système";
-à
+
 	echo -e "\033[1;34mInformations générales du système : \033[0m"
 	echo -e "\n- System: \033[1;35m$SERVER_SYSTEM\033[0m";
 	echo -e "- Hostname: \033[1;35m$SERVER_NAME\033[0m"
