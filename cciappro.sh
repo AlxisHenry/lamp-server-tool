@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# To execute this script run : bash cciappro.sh maintaining
+
 # =========================
 # Environment variables
 # =========================
@@ -8,16 +10,21 @@ source $(dirname "$0")/.env;
 # =========================
 # Helpers
 # =========================
-for helper in app/Helpers/*; do source $helper; done
+for Helper in $HELPERS; do source $Helper; done
 
 # =========================
 # Commands
 # =========================
-for command in app/Commands/*; do source $command; done
+for Command in $COMMANDS; do source $Command; done
+
+# =========================
+# Configs
+# =========================
+for Config in $CONFIGS; do source $Config; done
 
 # =========================
 # Maintaining
 # =========================
 source $(dirname "$0")/maintaining.sh
 
-maintaining;
+"$@"

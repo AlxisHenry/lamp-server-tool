@@ -1,48 +1,34 @@
-Logs {
+0)  Déconnecter la session [ Command: LogoutCommand() ]
 
-	- Insert dans les fichiers de log
-	- Affichage de logs
-	- Recherche dans les logs?
+1)  Entrer dans le terminal [ Command: EnterShellCommand() ]
 
-}
+2)  Mettre à jour le projet [ Command: UpdateApplicationCommand() ]
 
-Apache {
+3)  Réinitialiser le projet [ Command: SetupApplicationCommand() ]
 
-	- Reload apache => ReloadServices()
-	- Restart apache => RestartServices()
-	- Lister les fichiers de configuration
-	- Faire des modifications dans un fichier de configuration
+4)  Modifier le fichier de configuration [ Command: EnvApplicationCommand() ]
 
-}
+5)  Paramètres de Postfix { Settings: PostfixSettings() }
+	a) Redémarrer Postfix [ Command: RestartServicesCommand($service) ]
+	b) Changer le port SMTP [ Command:  ]
+	c) Modifier les identifiants SMTP [ Command:  ]
+	d) Envoyer un email de test [ Command:  ]
 
-Postfix {
+6)  Paramètres d'Apache { Settings: ApacheSettings() }
+	a) Redémarrer Apache [ Command: RestartServicesCommand($service) ]
 
-	- Restart postfix => RestartServices()
-	- Test d'envoi d'email => FakeEmailSent()
-	- Reconfigurer les identifiants => ConfigurePostfixIdentifier()
-	- Reconfigurer le port smtp => ConfigurePostfixSmtp()
+7)  Paramètres du gestionnaire de base de données { Settings: DatabaseSettings() }
+	a) Voir les bases de données [ Command:  ]
+	b) Voir les tables d'une base de données [ Command:  ]
+	
+8)  Redémarrer un service { Settings: ServicesSettings() }
+	a) Redémarrer Apache  [ Command: RestartServicesCommand($service) ]
+	b) Redémarrer MariaDB [ Command: RestartServicesCommand($service) ]
+	c) Redémarrer Postfix [ Command: RestartServicesCommand($service) ]
 
-}
+9)  Redémarrer le serveur [ Command: RestartServerCommand() ]
 
-BDD {
+Modification fichier :
 
-	- Restart Mariadb => RestartServices()
-	- Dump d'une base de données
-	- Voir les base de données / tables d'une bdd
-
-}
-
-Application {
-
-	- Mettre à jour le code => UpdateApplication()
-	- Réinitialisation du projet? => SetupApplication()
-	- Modifier le fichier .env
-
-}
-
-Global {
-
-	- Entrer dans le terminal => StopMaintaining()
-	- Redémarrer le serveur => RestartServer()
-
-}
+cat du fichier
+user input type : [ Anciennne valeur a modifié ] / [ Nouvelle valeur ]
