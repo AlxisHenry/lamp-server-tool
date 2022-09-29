@@ -2,10 +2,12 @@
 
 # To execute this script run : bash cciappro.sh maintaining
 
+cd $(dirname "$0");
+
 # =========================
 # Environment variables
 # =========================
-source $(dirname "$0")/.env;
+source .env;
 
 # =========================
 # Helpers
@@ -25,6 +27,6 @@ for Config in $CONFIGS; do source $Config; done
 # =========================
 # Maintaining
 # =========================
-source $(dirname "$0")/maintaining.sh
+source maintaining.sh;
 
 "$@"
