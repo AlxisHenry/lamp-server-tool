@@ -7,7 +7,7 @@ cd $(dirname "$0");
 # =========================
 # Environment variables
 # =========================
-source .env;
+source $(dirname "$0")/.env;
 
 # =========================
 # Helpers
