@@ -3,22 +3,22 @@
 **Cloner le projet**
 
 ```
-  # HTTPS
-  git clone https://github.com/AlxisHenry/server-maintaining.git my-server
-  # SSH 
-  git@github.com:AlxisHenry/server-maintaining.git my-server
+# HTTPS
+git clone https://github.com/AlxisHenry/server-maintaining.git my-server
+# SSH 
+git@github.com:AlxisHenry/server-maintaining.git my-server
 ```
 
 **Se rendre dans le dossier du projet**
 
 ```bash
-  cd my-server
+cd my-server
 ```
 
 **Lancer le script de mise en place du projet**
 
 ```bash
-  bash cciappro.sh maintaining [OPTION...]
+bash cciappro.sh maintaining [OPTION...]
 ```
 
 **Options**
@@ -28,7 +28,7 @@
 **Automatisation du lancement du script au démarrage d'un nouveau terminal**
 
 ```bash
-  bash config/config.sh bashrc
+bash config/config.sh bashrc
 ```
 
 ## :wave: Auteurs
