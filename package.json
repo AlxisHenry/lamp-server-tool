@@ -10,7 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "deploy": "npm run build && npx gh-pages docs/.vuepress/dist"
   },
   "repository": {
     "type": "git",
@@ -23,19 +24,9 @@
   },
   "homepage": "https://github.com/AlxisHenry/server-maintaining#readme",
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.2",
-    "@vuepress/plugin-docsearch": "^2.0.0-beta.51",
-    "@vuepress/plugin-search": "^2.0.0-beta.51",
-    "alpinejs": "^3.4.2",
-    "autoprefixer": "^10.4.2",
-    "axios": "^0.27",
-    "laravel-vite-plugin": "^0.5.0",
-    "lodash": "^4.17.19",
-    "lodash.merge": "^4.6.2",
-    "postcss": "^8.4.6",
-    "sass": "^1.54.8",
-    "tailwindcss": "^3.1.0",
-    "vite": "^3.0.0",
     "vuepress": "^2.0.0-beta.51"
+  },
+  "dependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
