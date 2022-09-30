@@ -16,7 +16,7 @@ MaitainingMenuTemplate ()
 	echo -e "***********************************************************\n"
 	echo -e "1) Informations systèmes	  6) Paramètres de Postfix";
 	echo -e "2) Entrer dans le terminal	  7) Paramètres d'Apache";
-	echo -e "3) Mettre à jour un site	  8) Paramètres des bases de données";
+	echo -e "3) Mettre à jour un site	  8) Paramètres de MariaDB";
 	echo -e "4) Réinitialiser un site	  9) Redémarrer un service";
 	echo -e "5) Gérer un site           	 10) Redémarrer le serveur\n\n";
 }
@@ -48,6 +48,17 @@ PostfixConfigTemplate ()
 	echo -e "\nQuel action souhaitez vous effectuer ?"
 	echo -e "----------------------------------------\n"
 	echo -e "a) Envoyer un email de test";
+	echo -e "b) Voir le statut du service";
+	echo -e "c) Redémarrer correctement le service";
+	echo -e "d) Forcer le redémarrage du service\n";
+}
+
+DatabaseConfigTemplate ()
+{
+	SelectedOptionHelper "Configuration de MariaDB";
+	echo -e "\nQuel action souhaitez vous effectuer ?"
+	echo -e "----------------------------------------\n"
+	echo -e "a) Faire une export d'une base de données";
 	echo -e "b) Voir le statut du service";
 	echo -e "c) Redémarrer correctement le service";
 	echo -e "d) Forcer le redémarrage du service\n";

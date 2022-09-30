@@ -16,5 +16,9 @@ SystemInformationsCommand ()
 	sudo free -h
 	echo -e "\n\033[1;35mAnalyse du stockage :\033[0m \n"
 	sudo df -h --total /dev /run
+	echo -n -e "\n\033[1;34mRécupération des applications et de leur version en cours";
+	PrintDotsHelper;
+	echo -e "\n\n\033[1;35mVersion des applications :\033[0m \n"
+	AppVersionsHelper;
 	ReturnToMenuHelper;
 }

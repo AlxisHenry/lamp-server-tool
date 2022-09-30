@@ -77,3 +77,12 @@ PrintDotsHelper ()
 		printf "."; 
 	done;
 }
+
+AppVersionsHelper () 
+{
+	for app in $APPS
+	do
+		version="VERSION_$app";
+		echo -e "Application: \033[1;35m$app\033[0m, Version trouvée: \033[1;35m${!version}\033[0m";
+	done;
+}
