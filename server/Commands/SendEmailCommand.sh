@@ -14,5 +14,6 @@ SendEmailCommand ()
 	echo -e '\n';
 	echo "Test Postfix Gmail https://example.com" | mail -s "Postfix Gmail" $email
 	echo -e -n "\n\033[1;32mL'email a correctement été envoyé. (destinataire: $email)\033[0m\n";
+	newLog command "Envoi d'un email via postfix à [$email], date: $(date).";
 	ReturnToMenuHelper;
 }

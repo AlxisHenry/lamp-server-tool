@@ -20,5 +20,6 @@ SystemInformationsCommand ()
 	PrintDotsHelper;
 	echo -e "\n\n\033[1;35mVersion des applications :\033[0m \n"
 	AppVersionsHelper;
+	newLog command "Visualisation des informations système, date: $(date).";
 	ReturnToMenuHelper;
 }

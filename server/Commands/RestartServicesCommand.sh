@@ -10,5 +10,6 @@ RestartServicesCommand ()
 	echo -e "\n";
 	sudo systemctl restart $service;
 	echo -e -n "\n\033[1;32mLe service a correctement été redémarré.\033[0m\n";
+	newLog command "Redémarrage du service [$service], date: $(date).";
 	ReturnToMenuHelper;
 }
