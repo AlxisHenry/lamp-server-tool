@@ -24,9 +24,4 @@ for Command in $COMMANDS; do source $Command; done
 # =========================
 for Config in $CONFIGS; do source $Config; done
 
-# =========================
-# Maintaining
-# =========================
-source maintaining.sh;
-
 "$@"
