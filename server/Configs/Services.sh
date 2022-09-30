@@ -5,8 +5,8 @@
 ServicesSettings ()
 {
 	while true; do
-		template;
-		ServicesTemplate;
+		MaitainingMenuTemplate;
+		ServicesSettingsTemplate;
     	echo -n -e "Préciser le service (:q pour annulé) [\033[0;33mnull\033[0m]: "; read service;
     	case $service in
     		a) RestartServicesCommand apache2; break;;
@@ -18,14 +18,4 @@ ServicesSettings ()
 
 	maintaining 1;
 
-}
-
-ServicesTemplate ()
-{
-	H_selected_option "Redémarrer un service";
-	echo -e "\nQuel service souhaitez-vous redémarrer ?"
-	echo -e "----------------------------------------\n"
-	echo -e "a) Apache";
-	echo -e "b) MariaDB";
-	echo -e "c) Postfix\n";
 }

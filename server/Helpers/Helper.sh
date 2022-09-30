@@ -2,12 +2,18 @@
 # Helper Functions
 # =============================
 
-H_command_starter ()
+# @param string $1
+SelectedOptionHelper ()
+{
+	echo -e "Option sélectionnée : \033[0;33m$1\033[0m.\n"
+}
+
+FunctionStarterHelper ()
 {
 	clear
 }
 
-H_return_maintaining_homepage ()
+ReturnToMenuHelper ()
 {
 	while true; do
     	echo -n -e "\nRetourner à l'accueil (écrire :q) "; read quit;
@@ -18,19 +24,21 @@ H_return_maintaining_homepage ()
     done;
 }
 
-H_restart_server ()
+RestartServerHelper ()
 {
 	sudo shutdown -r now;
 }
 
-H_stop_script_execution ()
+StopExecutionHelper ()
 {
 	exit;
 }
 
-H_selected_option ()
+PrintDotsHelper ()
 {
-	echo -e "Option sélectionnée : \033[0;33m$1\033[0m.\n"
+	for i in {1..3} 
+	do
+		sleep 1;
+		printf "."; 
+	done;
 }
-
-
