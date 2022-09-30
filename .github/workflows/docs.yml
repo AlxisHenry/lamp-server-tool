@@ -34,10 +34,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      # install dependencies if the cache did not hit
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+      - name: Install 🔧
+        run: yarn install
 
       # run build script
       - name: Build VuePress site
