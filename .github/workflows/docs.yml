@@ -39,6 +39,10 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
 
+      # clear cache
+      - name: Clear npm cache
+        run: npm cache clean --force
+
       # run build script
       - name: Build VuePress site
         run: npm run docs:build
