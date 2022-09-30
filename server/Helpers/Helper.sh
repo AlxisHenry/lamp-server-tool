@@ -6,7 +6,7 @@
 maintaining ()
 {
 	FunctionStarterHelper;
-	if [ ${1:-0} != 1 ] 
+	if [ ${1:-0} != "--skip" ] 
 	then
 		echo -n "Vérification de vos permissions... "; sleep 0.5; echo -e "✅"; sleep 0.2
 		echo -n "Vérification du système... "; sleep 0.5; echo -e "✅"; sleep 0.2
