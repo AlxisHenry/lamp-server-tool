@@ -2,7 +2,7 @@
 # Helper Functions
 # =============================
 
-# @param bool $1 => Skip checkup
+# @param string $1
 maintaining ()
 {
 	FunctionStarterHelper;
@@ -47,7 +47,7 @@ ReturnToMenuHelper ()
 	while true; do
     	echo -n -e "\nRetourner à l'accueil (écrire :q) "; read quit;
     	case $quit in
-    		:q) maintaining 1; break;;
+    		:q) maintaining --skip; break;;
             *) ;;	
     	esac
     done;

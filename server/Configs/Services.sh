@@ -15,7 +15,5 @@ ServicesSettings ()
             :q) echo -e "\n\033[1;31mOpération annulée. Vous allez être redirigé au menu principal dans un instant...\033[0m"; sleep 1.5; break;;	
     	esac
     done;
-
-	maintaining 1;
-
+	maintaining --skip;
 }

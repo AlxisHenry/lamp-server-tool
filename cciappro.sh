@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# To execute this script run : bash cciappro.sh maintaining (1 : for skip startup animations)
+# To execute this script run : bash cciappro.sh maintaining (--skip : to skip startup cooldown)
 
 cd $(dirname "$0");
 
