@@ -12,7 +12,7 @@ SendEmailCommand ()
 	echo -n -e "\nEnvoi d'un email à \033[1;35m$email\033[0m en cours.";
 	PrintDotsHelper;
 	echo -e '\n';
-	echo "Test Postfix Gmail https://example.com" &> /dev/null | mail -s "Postfix Gmail" $email
+	echo "Test Postfix Gmail https://example.com" | mail -s "Postfix Gmail" $email
 	echo -e -n "\n\033[1;32mL'email a correctement été envoyé. (destinataire: $email)\033[0m\n";
 	ReturnToMenuHelper;
 }
