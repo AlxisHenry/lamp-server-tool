@@ -25,6 +25,11 @@
 
 `--skip` : Lancer le script sans prendre en compte les `sleep`.
 
+**Automatisation du lancement du script au démarrage d'un nouveau terminal**
+
+```bash
+  bash config/config.sh bashrc
+```
 
 ## :wave: Auteurs
 
