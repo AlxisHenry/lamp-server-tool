@@ -24,7 +24,7 @@ maintaining ()
     		6) PostfixConfig; break;;
         	7) ApacheConfig; break;;
         	8) DatabaseConfig; break;;
-        	9) ServicesSettings; break;;
+        	9) ServicesConfig; break;;
         	10) RestartServerCommand; break;;
             *) ;;	
     	esac
@@ -42,15 +42,21 @@ FunctionStarterHelper ()
 	clear
 }
 
+# @param string $1
 ReturnToMenuHelper ()
 {
-	while true; do
-    	echo -n -e "\nRetourner à l'accueil (écrire :q) "; read quit;
-    	case $quit in
-    		:q) maintaining --skip; break;;
-            *) ;;	
-    	esac
-    done;
+	if [ ${1:-0} == "--force" ] 
+	then
+		maintaining --skip;
+	else
+		while true; do
+			echo -n -e "\nRetourner à l'accueil (écrire :q) "; read quit;
+			case $quit in
+				:q) maintaining --skip; break;;
+				*) ;;	
+			esac
+    	done;
+	fi
 }
 
 RestartServerHelper ()

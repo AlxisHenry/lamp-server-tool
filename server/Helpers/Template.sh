@@ -21,13 +21,34 @@ MaitainingMenuTemplate ()
 	echo -e "5) Gérer un site           	 10) Redémarrer le serveur\n\n";
 }
 
-ServicesSettingsTemplate ()
+ServicesConfigTemplate ()
 {
 	SelectedOptionHelper "Redémarrer un service";
-
 	echo -e "\nQuel service souhaitez-vous redémarrer ?"
 	echo -e "----------------------------------------\n"
 	echo -e "a) Apache";
 	echo -e "b) MariaDB";
 	echo -e "c) Postfix\n";
+}
+
+ApacheConfigTemplate () 
+{
+	SelectedOptionHelper "Configuration d'Apache";
+	echo -e "\nQuel action souhaitez vous effectuer ?"
+	echo -e "----------------------------------------\n"
+	echo -e "a) Liste des Virtual-Hosts";
+	echo -e "b) Voir le statut du service";
+	echo -e "c) Redémarrer correctement le service";
+	echo -e "d) Forcer le redémarrage du service\n";
+}
+
+PostfixConfigTemplate () 
+{
+	SelectedOptionHelper "Configuration de Postfix";
+	echo -e "\nQuel action souhaitez vous effectuer ?"
+	echo -e "----------------------------------------\n"
+	echo -e "a) Envoyer un email de test";
+	echo -e "b) Voir le statut du service";
+	echo -e "c) Redémarrer correctement le service";
+	echo -e "d) Forcer le redémarrage du service\n";
 }
