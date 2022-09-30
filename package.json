@@ -1,0 +1,27 @@
+{
+  "name": "maintaining",
+  "version": "0.1.0",
+  "description": "Linux Server Maintaining",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlxisHenry/server-maintaining.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlxisHenry/server-maintaining/issues"
+  },
+  "homepage": "https://github.com/AlxisHenry/server-maintaining#readme",
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.51"
+  }
+}

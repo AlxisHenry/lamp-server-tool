@@ -14,5 +14,4 @@ bashrc () {
 	echo -e $command >> $file_path;
 }
 
-
 "$@"
