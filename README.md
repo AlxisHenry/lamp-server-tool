@@ -31,6 +31,12 @@ bash cciappro.sh maintaining [OPTION...]
 bash config/config.sh bashrc
 ```
 
+**Création d'un alias temporaire pour l'exécution du programme**
+
+```bash
+bash config/aliases.sh create
+```
+
 ## :wave: Auteurs
 
 * **Alexis Henry** _alias_ [@AlxisHenry](https://github.com/AlxisHenry)
