@@ -25,7 +25,7 @@ maintaining ()
         	7) ApacheConfig; break;;
         	8) DatabaseConfig; break;;
         	9) ServicesConfig; break;;
-        	10) RestartServerCommand; break;;
+        	10) ServerConfig; break;;
             *) ;;	
     	esac
     done;
@@ -50,7 +50,7 @@ ReturnToMenuHelper ()
 		maintaining --skip;
 	else
 		while true; do
-			echo -n -e "\nRetourner à l'accueil (écrire :q) "; read quit;
+			echo -n -e "Retourner à l'accueil (écrire :q) "; read quit;
 			case $quit in
 				:q) maintaining --skip; break;;
 				*) ;;	
@@ -85,4 +85,10 @@ AppVersionsHelper ()
 		version="VERSION_$app";
 		echo -e "Application: \033[1;35m$app\033[0m, Version trouvée: \033[1;35m${!version}\033[0m";
 	done;
+}
+
+ServerUpdateHelper ()
+{
+	update=$(sudo apt update > /dev/null 2>&1 && sudo apt upgrade -y > /dev/null 2>&1)
+	$update &	
 }
