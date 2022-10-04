@@ -58,7 +58,7 @@ DatabaseConfigTemplate ()
 	SelectedOptionHelper "Configuration de MariaDB";
 	echo -e "\nQuel action souhaitez vous effectuer ?"
 	echo -e "----------------------------------------\n"
-	echo -e "a) Faire une export d'une base de données";
+	echo -e "a) Faire une export de la base de données [$DB_DATABASE]";
 	echo -e "b) Voir le statut du service";
 	echo -e "c) Redémarrer correctement le service";
 	echo -e "d) Forcer le redémarrage du service\n";

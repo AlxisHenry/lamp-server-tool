@@ -89,6 +89,12 @@ AppVersionsHelper ()
 
 ServerUpdateHelper ()
 {
-	update=$(sudo apt update > /dev/null 2>&1 && sudo apt upgrade -y > /dev/null 2>&1)
+	update=$(sudo apt update > /dev/null 2>&1 && sudo apt upgrade -y > /dev/null 2>&1);
 	$update &	
+}
+
+DatabaseDumpHelper ()
+{
+	dump=$(sudo mysqldump --no-create-info ${DB_DATABASE} > ${DB_DUMPS_PATH}/dump_${DB_DATABASE}_$(date +\%Y).sql);
+	$dump &
 }
