@@ -50,7 +50,7 @@ ReturnToMenuHelper ()
 		maintaining --skip;
 	else
 		while true; do
-			echo -n -e "Retourner à l'accueil (écrire :q) "; read quit;
+			echo -n -e "\nRetourner à l'accueil (écrire :q) "; read quit;
 			case $quit in
 				:q) maintaining --skip; break;;
 				*) ;;	

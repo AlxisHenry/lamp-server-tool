@@ -7,7 +7,7 @@ ServicesConfig ()
 	while true; do
 		MaitainingMenuTemplate;
 		ServicesConfigTemplate;
-    	echo -n -e "Préciser le service (:q pour annulé) [\033[0;33mnull\033[0m]: "; read service;
+    	echo -n -e "Préciser le service (:q pour annuler) [\033[0;33mnull\033[0m]: "; read service;
     	case $service in
     		a) RestartServicesCommand apache2; break;;
     		b) RestartServicesCommand mariadb; break;;

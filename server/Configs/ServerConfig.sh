@@ -7,7 +7,7 @@ ServerConfig ()
 	while true; do
 		MaitainingMenuTemplate;
 		ServerConfigTemplate;
-    	echo -n -e "Indiquer l'action à effectuer (:q pour annulé) [\033[0;33mnull\033[0m]: "; read action;
+    	echo -n -e "Indiquer l'action à effectuer (:q pour annuler) [\033[0;33mnull\033[0m]: "; read action;
     	case $action in
     		a) RunSystemUpdateCommand apache2; break;;
     		b) RestartServerCommand mariadb; break;;

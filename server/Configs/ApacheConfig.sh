@@ -7,7 +7,7 @@ ApacheConfig ()
 	while true; do
 		MaitainingMenuTemplate;
 		ApacheConfigTemplate;
-    	echo -n -e "Action à effectuer (:q pour annulé) [\033[0;33mnull\033[0m]: "; read action;
+    	echo -n -e "Action à effectuer (:q pour annuler) [\033[0;33mnull\033[0m]: "; read action;
     	case $action in
     		a) ListingVirtualHostCommand; break;;
 			b) StatusServicesCommand apache2; break;;
