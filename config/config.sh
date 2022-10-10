@@ -10,7 +10,7 @@ source $(dirname "$0")/../.env;
 # =========================
 bashrc () {
 	file_path="/home/$USER/.bashrc";
-	command="\nbash $APP_PATH/cciappro.sh maintaining";
+	command="\nbash $APP_PATH/server.sh maintaining";
 	echo -e $command >> $file_path;
 }
 

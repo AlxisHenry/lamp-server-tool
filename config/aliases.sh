@@ -9,7 +9,7 @@ source $(dirname "$0")/../.env;
 # .bashrc configuration
 # =========================
 create () {
-	alias maintaining="bash $APP_PATH/cciappro.sh maintaining";
+	alias maintaining="bash $APP_PATH/server.sh maintaining";
 }
 
 "$@"

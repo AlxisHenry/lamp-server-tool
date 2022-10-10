@@ -18,7 +18,7 @@ cd my-server
 **Lancer le script de mise en place du projet**
 
 ```bash
-bash cciappro.sh maintaining [OPTION...]
+bash server.sh maintaining [OPTION...]
 ```
 
 **Options**
