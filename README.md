@@ -4,15 +4,25 @@
 
 ```
 # HTTPS
-git clone https://github.com/AlxisHenry/server-maintaining.git my-server
-# SSH 
-git@github.com:AlxisHenry/server-maintaining.git my-server
+git clone https://github.com/AlxisHenry/lamp-server-tool.git my-server
 ```
 
 **Se rendre dans le dossier du projet**
 
 ```bash
 cd my-server
+```
+
+**Créer le fichier `.env`**
+
+```bash
+cp .env.example .env
+```
+
+**Configurer le fichier `.env`**
+
+```bash
+bash config/.env.sh
 ```
 
 **Lancer le script de mise en place du projet**
