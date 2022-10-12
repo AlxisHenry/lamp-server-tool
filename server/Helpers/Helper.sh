@@ -6,6 +6,7 @@
 maintaining ()
 {
 	FunctionStarterHelper;
+	CheckIfIsInstalledHelper;
 	if [ ${1:-0} != "--skip" ] 
 	then
 		echo -n "Vérification de vos permissions... "; sleep 0.5; echo -e "✅"; sleep 0.2
@@ -83,7 +84,7 @@ AppVersionsHelper ()
 	for app in $APPS
 	do
 		version="VERSION_$app";
-		echo -e "Application: \033[1;35m$app\033[0m, Version trouvée: \033[1;35m${!version}\033[0m";
+		echo -e "Application: \033[1;35m$app\033[0m, Version installée: \033[1;35m${!version}\033[0m";
 	done;
 }
 
@@ -97,4 +98,17 @@ DatabaseDumpHelper ()
 {
 	dump=$(sudo mysqldump --no-create-info ${DB_DATABASE} > ${DB_DUMPS_PATH}/dump_${DB_DATABASE}_$(date +\%Y).sql);
 	$dump &
+}
+
+CheckIfIsInstalledHelper ()
+{
+	for app in $APPS_NAMES
+	do
+		if [ -z $(which $1) ]
+		then
+			echo -e "\n\033[0;31mExécution stoppée, l'application $app n'est pas installée. Vérifier les logs.\033[0m\n";
+			newLog command "L'application $app n'est pas installée.";
+			exit;
+		fi
+	done;
 }
