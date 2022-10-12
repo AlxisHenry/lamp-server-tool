@@ -4,7 +4,7 @@
 
 ```
 # HTTPS
-git clone https://github.com/AlxisHenry/lamp-server-tool.git my-server
+git clone https://github.com/AlxisHenry/lamp-server-tools.git my-server
 ```
 
 **Se rendre dans le dossier du projet**
