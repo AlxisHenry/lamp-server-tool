@@ -10,6 +10,11 @@ cd $(dirname "$0");
 source $(dirname "$0")/.env;
 
 # =========================
+# Check for updates
+# =========================
+git pull origin master;
+
+# =========================
 # Helpers
 # =========================
 for Helper in $HELPERS; do source $Helper; done
