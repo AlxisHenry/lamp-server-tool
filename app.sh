@@ -31,8 +31,8 @@
 #		- $ bash app.sh --maintenance
 
 # Availble make commands:
-# $ make config: Launch configuration.
-# $ make tests: Launch the tests.
+# - $ make config: Launch configuration.
+# - $ make tests: Launch the tests.
 
 # Tips:
 # - If you use the automatic configuration, the program will be launched when you create a new terminal.
@@ -46,18 +46,39 @@
 # - Read the readme.
 # - Read the source code.
 
-source $(dirname "$0")/.env
+source $(dirname "$0")/.env;
+source $(dirname "$0")/utils/tools.sh;
+source $(dirname "$0")/utils/functions.sh;
+source $(dirname "$0")/utils/commands.sh;
 
 # Options (you can add or remove options in the file "utils/args.sh"):
 # -h, --help: Display the help.
 # -c, --config: Setup configuration.
 # -t, --tests: Launch tests only.
-# -s, --skip: Skip startup animations and tests.
-# -d, --debug: Display the debug messages.
+# -s, --skip: Skip checks (update, tests, etc...) and animations.
+# --no-update: Disable the update check only.
 # -m, --maintenance: Launch the program in production mode (test skipped).
 
 # If you dont specify any option, the program will be launched in development mode.
 # In this mode, the program will be launched without the `--skip` option.
 # So you will see the startup animations and the tests will be run before the launch of the program.
 
-source $(dirname "$0")/utils/args.sh
+source $(dirname "$0")/utils/args.sh;
+
+# By default, the program will check if there is an update available.
+# If you want to disable this feature, you can set the variable "checkForUpdate" to "false" in the file ".env".
+if [[ "${noUpdate}" == "false" ]] && [[ "${APP_UPDATE}" == "true" && "${skip}" == "false" ]];
+then
+		checkForUpdate;
+fi
+
+# If you don't run the program in production mode, tests will be automatically run.
+# If you want to skip this feature, you can start the program with the `--maintenance` option.
+
+if [[ "${maintenance}" == "false" ]] && [[ "${skip}" == "false" ]]; 
+then
+	tests;
+fi
+
+# Start the program.
+maintaining ${skip};

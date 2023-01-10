@@ -43,7 +43,11 @@ function details () {
 	if [[ "${2}" == "true" ]]; then
 		echo -e "";
 	fi
-	echo -e "\033[0;94mDetails\033[0m: ${1}";
+	if [[ "${3}" == "true" ]]; then
+		echo -en "\033[0;94mDetails\033[0m: ${1}"; wait;
+	else
+		echo -e "\033[0;94mDetails\033[0m: ${1}";
+	fi
 }
 
 function debug () {

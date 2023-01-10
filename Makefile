@@ -1,7 +1,7 @@
 .PHONY: tests
 tests: # Run application tests
-	@bash maintenance.sh;
+	@bash app.sh --tests;
 
 .PHONY: config
 config: # Configure application
-	@bash maintenance.sh --config;
+	@bash app.sh --config;
