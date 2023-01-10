@@ -30,7 +30,7 @@
   * [:gear: Setup](#gear-setup)
   * [:gear: Configuration](#gear-config)
   * [:test\_tube: Tests](#test_tube-tests)
-	* [:wrench: Available commands](#wrench-available-commands)
+  * [:wrench: Available commands](#wrench-available-commands)
 - [:wave: Authors](#wave-authors)
 
 ## :star2: About the project
