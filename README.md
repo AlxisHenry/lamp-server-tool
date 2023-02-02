@@ -59,14 +59,18 @@ bash app.sh -c|--config || make config
 
 ### :test_tube: Tests
 
-**Run the tests using the following command**
+**Run the tests using the following command :**
+
+```bash
+bash app.sh -t |--tests || make tests
+```
 
 ### :wrench: Available options
 
 - **Display the help**
 
 ```bash
-bash app.sh -h|--help || make tests
+bash app.sh -h|--help
 ```
 
 - **Setup configuration**
