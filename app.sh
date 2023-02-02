@@ -69,7 +69,7 @@ source $(dirname "$0")/utils/args.sh;
 # If you want to disable this feature, you can set the variable "checkForUpdate" to "false" in the file ".env".
 if [[ "${noUpdate}" == "false" ]] && [[ "${APP_UPDATE}" == "true" && "${skip}" == "false" ]];
 then
-		checkForUpdate;
+	checkForUpdate;
 fi
 
 # If you don't run the program in production mode, tests will be automatically run.
