@@ -15,7 +15,7 @@ for arg in ${args}
 do
 	if [[ "${arg}" == "-h" ]] || [[ "${arg}" == "--help" ]]; 
 	then
-		echo -e "\nUsage: bash app.sh [\033[1;33moptions\033[0m]\n";
+		echo -e "\nUsage: bash app.sh [\033[1;33m:options\033[0m]\n";
 		echo -e "Available options:\n";
 		echo -e "  \033[1;33m-h\033[0m, \033[1;33m--help\033[0m: Display the help.";
 		echo -e "  \033[1;33m-c\033[0m, \033[1;33m--config\033[0m: Setup configuration.";

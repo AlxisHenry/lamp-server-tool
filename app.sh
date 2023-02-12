@@ -27,7 +27,7 @@
 #		- $ bash app.sh --tests | $ make tests
 # 3. Launch the program in development mode (check if everything is working):
 #		- $ bash app.sh
-# 4. Launch the program in production mode (skip tests):
+# 4. Launch the program in production mode (skipping tests):
 #		- $ bash app.sh --maintenance
 
 # Availble make commands:
@@ -74,11 +74,9 @@ fi
 
 # If you don't run the program in production mode, tests will be automatically run.
 # If you want to skip this feature, you can start the program with the `--maintenance` option.
-
 if [[ "${maintenance}" == "false" ]] && [[ "${skip}" == "false" ]]; 
 then
 	tests;
 fi
 
-# Start the program.
-maintaining ${skip};
+show ${skip};

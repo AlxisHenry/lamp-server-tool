@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Run the tests.
 function tests() {
 	dir="$(dirname "$0")/tests";
 	clear;
@@ -12,7 +11,6 @@ function tests() {
 	sleep 2;
 }
 
-# Check if there is an update available.
 function checkForUpdate() {
 	clear;
 	details "Checking for updates..." false;
@@ -28,8 +26,7 @@ function checkForUpdate() {
 	sleep 2;
 }
 
-# Start the program.
-function maintaining() {
+function show() {
 	clear;
 	if [ ${1:-0} == "false" ];
 	then
@@ -38,26 +35,23 @@ function maintaining() {
 		echo -n "Lancement de l'application... "; sleep 0.5; echo -e "✅"; sleep 0.2
 	fi
 	while true; do
-		MaitainingMenuTemplate;
+		showMenu;
     echo -n -e "Indiquer l'option désirée [\033[0;33mnull\033[0m]: "; read option;
     case ${option} in
-    	1) SystemInformationsCommand; break;;
-    	2) EnterShellCommand; break;;
-    	3) UpdateApplicationCommand; break;;
-    	4) SetupApplicationCommand; break;;
-    	5) EnvApplicationCommand; break;;
-    	6) PostfixConfig; break;;
-      7) ApacheConfig; break;;
-      8) DatabaseConfig; break;;
-      9) ServicesConfig; break;;
-      10) ServerConfig; break;;
+    	1) system; break;;
+    	2) server; break;;
+    	3) shell; break;;
+    	4) appUpdate; break;;
+    	5) services; break;;
+    	6) serviceSettings apache2; break;;
+      7) serviceSettings mariadb; break;;
+      8) serviceSettings postfix; break;;
       *);;
     esac
   done;
 }
 
-MaitainingMenuTemplate ()
-{
+function showMenu() {
 	clear;
 	echo -n "Vérification de vos permissions... "; echo -e "✅";
 	echo -n "Vérification du système... "; echo -e "✅";
@@ -68,22 +62,46 @@ MaitainingMenuTemplate ()
 	echo -e "\n***********************************************************"
 	echo -e "****** Application de maintenance du serveur - \033[0;33m${APP_VERSION}\033[0m ******";
 	echo -e "***********************************************************\n"
-	echo -e "1) Informations systèmes	  6) Paramètres de Postfix";
-	echo -e "2) Entrer dans le terminal	  7) Paramètres d'Apache";
-	echo -e "3) Mettre à jour un site	  8) Paramètres de MariaDB";
-	echo -e "4) Réinitialiser un site	  9) Redémarrer un service";
-	echo -e "5) Gérer un site           	 10) Gérer le serveur\n\n";
+	echo -e "1) Informations du système      5) Gestion des services";
+	echo -e "2) Gestion du serveur           6) Paramètres d'Apache";
+	echo -e "3) Ouvrir un terminal           7) Paramètres de MariaDB";
+	echo -e "4) Mettre à un jour un site     8) Paramètres de Postfix\n";
 }
 
-# Store log in the specified history file.
-function newLog ()
-{
-	log_file="LOG_${1^^}";
-	echo -e $2 >> $LOG_HISTORY;
-	echo -e "[: $SERVER_SYSTEM - $SERVER_NAME :]" $2 >> ${!log_file};
+function log() {
+	file="LOG_${1^^}";
+	echo -e $2 >> ${LOG_HISTORY};
+	echo -e "[: ${SERVER_SYSTEM} - ${SERVER_NAME} :]" $2 >> ${!file};
 }
 
-# Show the selected tab.
-function selectecOption() {
+function selectedOption() {
 	echo -e "Option sélectionnée : \033[0;33m$1\033[0m.\n";
 }
+
+function startCommand() {
+	clear;
+}
+
+function showAppVersion() {
+	for app in ${APPS}
+	do
+		version="VERSION_${app}";
+		echo -e "Application: \033[1;35m${app}\033[0m, Version installée: \033[1;35m${!version}\033[0m";
+	done;
+}
+
+function returnToMenu() {
+	if [ ${1:-0} == "--skip" ] 
+	then
+		show --skip;
+	else
+		while true; do
+			echo -n -e "\nRetourner à l'accueil (écrire :q) "; read quit;
+			case $quit in
+				:q) show --skip; break;;
+				*) ;;	
+			esac
+    	done;
+	fi
+}
+
