@@ -43,9 +43,9 @@ function show() {
     	3) shell; break;;
     	4) appUpdate; break;;
     	5) services; break;;
-    	6) serviceSettings apache2; break;;
-      7) serviceSettings mariadb; break;;
-      8) serviceSettings postfix; break;;
+    	6) showApache; break;;
+      7) showDatabase "mariadb"; break;;
+      8) showPostfix "postfix"; break;;
       *);;
     esac
   done;
@@ -105,3 +105,63 @@ function returnToMenu() {
 	fi
 }
 
+function showApache() {
+	while true; do
+		showMenu;
+		selectedOption "Configuration d'Apache";
+		echo -e "Quel action souhaitez vous effectuer ?\n"
+		echo -e "a) Voir le statut du service";
+		echo -e "b) Redémarrer correctement le service";
+		echo -e "c) Forcer le redémarrage du service\n";
+    echo -n -e "Action à effectuer (:q pour annuler) [\033[0;33mnull\033[0m]: "; read action;
+    case $action in
+			a) service "status" "apache2"; break;;
+    	b) service "reload" "apache2"; break;;
+    	c) service "restart" "apache2"; break;;
+      :q) echo -e "\n\033[1;31mOpération annulée. Vous allez être redirigé au menu principal dans un instant...\033[0m"; sleep 1.5; break;;	
+    esac
+  done;
+	returnToMenu --skip;
+}
+
+function showPostfix() {
+	while true; do
+		showMenu;
+		selectedOption "Configuration de Postfix";
+		echo -e "Quel action souhaitez vous effectuer ?\n"
+		echo -e "a) Envoyer un email de test";
+		echo -e "b) Voir le statut du service";
+		echo -e "c) Redémarrer correctement le service";
+		echo -e "d) Forcer le redémarrage du service\n";    	
+		echo -n -e "Action à effectuer (:q pour annuler) [\033[0;33mnull\033[0m]: "; read action;
+    case $action in
+    	a) sendTestEmail; break;;
+			b) service "status" "postfix"; break;;
+    	c) service "reload" "postfix"; break;;
+    	d) service "restart" "postfix"; break;;
+      :q) echo -e "\n\033[1;31mOpération annulée. Vous allez être redirigé au menu principal dans un instant...\033[0m"; sleep 1.5; break;;	
+    esac
+  done;
+	returnToMenu --skip;
+}
+
+function showDatabase() {
+	while true; do
+		showMenu;
+		selectedOption "Configuration de MariaDB";
+		echo -e "Quel action souhaitez vous effectuer ?\n"
+		echo -e "a) Faire un dump des base de données";
+		echo -e "b) Voir le statut du service";
+		echo -e "c) Redémarrer correctement le service";
+		echo -e "d) Forcer le redémarrage du service\n";    	
+		echo -n -e "Action à effectuer (:q pour annuler) [\033[0;33mnull\033[0m]: "; read action;
+    case $action in
+    	a) dumpDatabases; break;;
+			b) service "status" "mariadb"; break;;
+    	c) service "reload" "mariadb"; break;;
+    	d) service "restart" "mariadb"; break;;
+      :q) echo -e "\n\033[1;31mOpération annulée. Vous allez être redirigé au menu principal dans un instant...\033[0m"; sleep 1.5; break;;	
+    esac
+  done;
+	returnToMenu --skip;
+}

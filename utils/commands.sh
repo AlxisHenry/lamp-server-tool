@@ -75,9 +75,75 @@ function appUpdate() {
 }
 
 function services() {
-	echo "";
+	while true; do
+		showMenu;
+		selectedOption "Gestion des servivces";
+		echo -e "Sélectionner un des services ci-dessous\n"
+		echo -e "a) Apache";
+		echo -e "b) MariaDB";
+		echo -e "c) Postfix\n";    	
+		echo -n -e "Préciser le service (:q pour annuler) [\033[0;33mnull\033[0m]: "; read service;
+		case ${service} in
+			a) apache "apache2"; break;;
+			b) postfix "mariadb"; break;;
+			c) database "postfix"; break;;
+			:q) echo -e "\n\033[1;31mOpération annulée. Vous allez être redirigé au menu principal dans un instant...\033[0m"; sleep 1.5; break;;	
+		esac
+  done;
+	returnToMenu --skip;
 }
 
-function serviceSettings() {
+function service() {
 	echo "";
+  if [ "${1}" == "status" ]; then
+		details "Affichage du statut du service \033[1;35m${2}\033[0m en cours.";
+    sudo systemctl status "${2}"
+  elif [ "${1}" == "reload" ]; then
+		details "Actualisation du service \033[1;35m${2}\033[0m en cours.";
+   sudo systemctl reload "${2}"
+  elif [ "${1}" == "restart" ]; then
+		details "Redémarrage du service \033[1;35m${2}\033[0m en cours.";
+    sudo systemctl restart "${2}"
+	fi
+	log command "Action sur le service [${2}], type: ${1}, date: $(date).";
+	returnToMenu;
+}
+
+function sendTestEmail() {
+	startCommand;
+	selectedOption "Envoi d'un email de test via postfix";
+	echo -e "\n  Saisir l'email du destinataire [\e[0;33mnull\e[0m]";
+	printf "> ";
+	read email;
+	echo -n -e "\nEnvoi d'un email à \033[1;35m${email}\033[0m en cours.";
+	wait;
+	echo -e '\n';
+	echo "Test Postfix Gmail https://example.com" | mail -s "Postfix Gmail" ${email}
+	if [ $? -eq 0 ]
+	then 
+		echo -e -n "\n\033[1;32mL'email a correctement été envoyé. (destinataire: ${email})\033[0m\n";
+		status="done";
+	else 
+		echo -e -n "\n\033[1;31mL'email n'a pas pu être envoyé. (destinataire: ${email})\033[0m\n";
+		status="failed";
+	fi
+	log command "Envoi d'un email via postfix à [${email}], status: ${status}, date: $(date).";
+	returnToMenu;
+}
+
+function dumpDatabases() {
+	echo "";
+	selectedOption "Dump des base de données";
+	echo -n "Vérification de vos permissions... "; sleep 0.5; echo -e "✅"; sleep 0.2;
+  echo -n "Exclusion de la base de données par défaut de MySQL... "; sleep 0.5; echo -e "✅"; sleep 0.2;
+  echo -n "Récupération de la liste des bases de données... "; sleep 0.5; echo -e "✅"; sleep 0.2;
+	echo "";
+  databases=$(sudo mysql -Bse "SHOW DATABASES" | grep -v "^mysql$" | grep -v "^information_schema$" | grep -v "^performance_schema$" | grep -v "^sys$");
+  for database in $databases; do
+    filename="$database-$(date +%s).sql";
+		log command "Création du dump de la base de données $database, date $(date)";
+    sudo mysqldump --databases $database > ${DB_DUMPPATH}/${filename};
+  done
+  echo -e "\n\033[1;32mToutes les bases de données ont été exportées avec succès !\033[0m"
+	returnToMenu;
 }

@@ -48,8 +48,8 @@
 
 source $(dirname "$0")/.env;
 source $(dirname "$0")/utils/tools.sh;
-source $(dirname "$0")/utils/functions.sh;
 source $(dirname "$0")/utils/commands.sh;
+source $(dirname "$0")/utils/functions.sh;
 
 # Options (you can add or remove options in the file "utils/args.sh"):
 # -h, --help: Display the help.
